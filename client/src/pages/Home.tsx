@@ -191,8 +191,7 @@ export default function Home() {
                 屏幕顶部的<span className="grad">刘海</span>里
               </h1>
               <p className="hero-lede">
-                点一下就聊，按住就说，拖进文件让它自己读。HermesPet 是一只常驻桌面的原生
-                AI 伴侣 —— 多引擎并行、对话永久保存，现已登陆 macOS 与 Windows 双平台。
+                点一下就聊，按住就说，拖进文件让它自己读。
               </p>
               <div className="hero-cta">
                 <a className="btn-primary" href={primaryHref} target="_blank" rel="noreferrer">
