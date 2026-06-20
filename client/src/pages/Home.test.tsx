@@ -14,10 +14,9 @@ describe("Home Page", () => {
     expect(screen.getAllByText("HermesPet").length).toBeGreaterThan(0);
   });
 
-  it("renders the hero lede with dual-platform messaging", () => {
+  it("renders the hero lede", () => {
     render(<Home />);
     expect(screen.getByText(/点一下就聊，按住就说/)).toBeTruthy();
-    expect(screen.getAllByText(/macOS 与 Windows 双平台/).length).toBeGreaterThan(0);
   });
 
   it("renders navigation links", () => {
@@ -47,27 +46,33 @@ describe("Home Page", () => {
     expect(screen.getByText(/下载 Setup/)).toBeTruthy();
   });
 
-  it("renders experience section", () => {
+  it("renders the narrative feature rows", () => {
     render(<Home />);
-    expect(screen.getByText("点刘海")).toBeTruthy();
+    expect(screen.getAllByText(/点刘海/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/知识云图/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/跨对话记忆/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/AI 笔记/).length).toBeGreaterThan(0);
+  });
+
+  it("renders the more-capabilities cards", () => {
+    render(<Home />);
     expect(screen.getByText("按住说话")).toBeTruthy();
     expect(screen.getByText("拖进文件")).toBeTruthy();
     expect(screen.getByText("并行处理")).toBeTruthy();
   });
 
-  it("renders new feature highlights", () => {
-    render(<Home />);
-    expect(screen.getByText("知识云图")).toBeTruthy();
-    expect(screen.getByText("跨对话记忆")).toBeTruthy();
-    expect(screen.getByText("AI 笔记")).toBeTruthy();
-  });
-
-  it("renders engine tabs", () => {
+  it("renders engine switcher tabs", () => {
     render(<Home />);
     expect(screen.getAllByText("在线 AI").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Hermes Gateway").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Claude Code").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Codex").length).toBeGreaterThan(0);
+  });
+
+  it("renders the FAQ section", () => {
+    render(<Home />);
+    expect(screen.getByText("常见问题")).toBeTruthy();
+    expect(screen.getByText(/HermesPet 是免费的吗/)).toBeTruthy();
   });
 
   it("renders official certification section", () => {
