@@ -169,14 +169,14 @@
 .hero-badge--win { background: var(--blue-dim); color: #93b4f7; border: 1px solid rgba(59, 130, 246, 0.24); }
 
 .hero h1 {
-  font-size: clamp(40px, 5.6vw, 68px); font-weight: 800;
+  font-size: clamp(40px, 5.6vw, 68px); font-weight: 800; text-wrap: balance;
   color: var(--text-primary); letter-spacing: -0.045em; line-height: 1.04; margin-bottom: 22px;
 }
 .hero h1 .grad {
   background: linear-gradient(120deg, var(--accent-strong), var(--accent-soft));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.hero-lede { font-size: 17px; line-height: 1.72; color: var(--text-secondary); max-width: 480px; margin-bottom: 34px; }
+.hero-lede { font-size: 17px; line-height: 1.72; color: var(--text-secondary); max-width: 480px; margin-bottom: 34px; text-wrap: balance; }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-meta {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
@@ -241,10 +241,10 @@
   color: var(--accent); margin-bottom: 14px; text-align: center;
 }
 .section-title {
-  font-size: clamp(27px, 3.6vw, 42px); font-weight: 800; color: var(--text-primary);
+  font-size: clamp(27px, 3.6vw, 42px); font-weight: 800; color: var(--text-primary); text-wrap: balance;
   letter-spacing: -0.035em; line-height: 1.14; text-align: center; max-width: 720px; margin: 0 auto 16px;
 }
-.section-desc { font-size: 15.5px; color: var(--text-tertiary); text-align: center; max-width: 580px; margin: 0 auto 56px; line-height: 1.7; }
+.section-desc { font-size: 15.5px; color: var(--text-tertiary); text-align: center; max-width: 580px; margin: 0 auto 56px; line-height: 1.7; text-wrap: balance; }
 
 /* ═══ Download ═══ */
 .download-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,0.012)); }
@@ -463,6 +463,20 @@
   .dl-card { padding: 26px; }
   .cta-card { padding: 44px 24px; }
   .footer-content { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ═══ Keyboard focus ═══ */
+.hermespet-page a:focus-visible,
+.hermespet-page button:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ═══ Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  .hermespet-page * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .bg-aurora, .island-dot, .hero-badge .dot, .hero-chip { animation: none !important; }
 }
 
 /* ═══ Scrollbar ═══ */
