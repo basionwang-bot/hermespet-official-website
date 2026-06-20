@@ -9,22 +9,23 @@ vi.mock("wouter", () => ({
 }));
 
 describe("Home Page", () => {
-  it("renders the main title", () => {
+  it("renders the brand name", () => {
     render(<Home />);
     expect(screen.getAllByText("HermesPet").length).toBeGreaterThan(0);
   });
 
-  it("renders the hero description", () => {
+  it("renders the hero lede with dual-platform messaging", () => {
     render(<Home />);
-    expect(screen.getByText(/让 AI 住进 MacBook 刘海里/)).toBeTruthy();
+    expect(screen.getByText(/点一下就聊，按住就说/)).toBeTruthy();
+    expect(screen.getAllByText(/macOS 与 Windows 双平台/).length).toBeGreaterThan(0);
   });
 
   it("renders navigation links", () => {
     render(<Home />);
+    expect(screen.getAllByText("下载").length).toBeGreaterThan(0);
     expect(screen.getByText("体验")).toBeTruthy();
     expect(screen.getByText("引擎")).toBeTruthy();
     expect(screen.getByText("历程")).toBeTruthy();
-    expect(screen.getByText("隐私")).toBeTruthy();
     expect(screen.getByText("官方")).toBeTruthy();
   });
 
@@ -33,9 +34,17 @@ describe("Home Page", () => {
     expect(screen.getByText("官方网站")).toBeTruthy();
   });
 
-  it("renders the Windows badge", () => {
+  it("announces the released Windows preview build", () => {
     render(<Home />);
-    expect(screen.getByText("Windows 即将上线")).toBeTruthy();
+    expect(screen.getByText("Windows 尝鲜版已发布")).toBeTruthy();
+  });
+
+  it("renders both platform download cards", () => {
+    render(<Home />);
+    expect(screen.getByText("macOS")).toBeTruthy();
+    expect(screen.getByText("Windows")).toBeTruthy();
+    expect(screen.getAllByText(/Apple Silicon/).length).toBeGreaterThan(0);
+    expect(screen.getByText(/下载 Setup/)).toBeTruthy();
   });
 
   it("renders experience section", () => {
@@ -44,6 +53,13 @@ describe("Home Page", () => {
     expect(screen.getByText("按住说话")).toBeTruthy();
     expect(screen.getByText("拖进文件")).toBeTruthy();
     expect(screen.getByText("并行处理")).toBeTruthy();
+  });
+
+  it("renders new feature highlights", () => {
+    render(<Home />);
+    expect(screen.getByText("知识云图")).toBeTruthy();
+    expect(screen.getByText("跨对话记忆")).toBeTruthy();
+    expect(screen.getByText("AI 笔记")).toBeTruthy();
   });
 
   it("renders engine tabs", () => {
@@ -62,13 +78,6 @@ describe("Home Page", () => {
 
   it("renders copyright footer", () => {
     render(<Home />);
-    expect(screen.getAllByText(/© 2024-2026 Basion Wang/).length).toBeGreaterThan(0);
-  });
-
-  it("renders Windows section", () => {
-    render(<Home />);
-    expect(screen.getByText("HermesPet for Windows 马上上线")).toBeTruthy();
-    expect(screen.getByText("系统托盘集成")).toBeTruthy();
-    expect(screen.getByText("全局快捷键")).toBeTruthy();
+    expect(screen.getAllByText(/2024–2026 Basion Wang/).length).toBeGreaterThan(0);
   });
 });
